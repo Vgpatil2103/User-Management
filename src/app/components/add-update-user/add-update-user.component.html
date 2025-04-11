@@ -1,0 +1,37 @@
+<div class="form-container">
+    <div class="card">
+        <div class="card-heading">
+            <h1>Add User</h1>
+          </div>
+        <hr />
+        
+        <form [formGroup]="userForm" >
+            <mat-form-field appearance="fill">
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" />
+              <mat-error *ngIf="userForm.get('name')?.invalid &&(userForm.get('name')?.touched || userForm.get('name')?.dirty)">Name is required</mat-error>
+            </mat-form-field>
+        
+            <mat-form-field appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" />
+              <mat-error *ngIf="userForm.get('email')?.invalid &&(userForm.get('email')?.touched || userForm.get('email')?.dirty)">Invalid email</mat-error>
+            </mat-form-field>
+        
+            <mat-form-field appearance="fill">
+              <mat-label>Role</mat-label>
+              <mat-select formControlName="role">
+                <mat-option value="Admin">Admin</mat-option>
+                <mat-option value="User">User</mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+            <div class="action-btn">
+                <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Save</button>
+                <button mat-raised-button color="warn" routerLink="/user-list">Cancel</button>
+            </div>
+           
+          </form>
+    </div>
+</div>
+  
